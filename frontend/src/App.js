@@ -3,6 +3,7 @@ import {BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import './App.css';
 import Home from './components/Home';
+import Issues from './components/Issues';
 import Login from './components/Login';
 import NavBar from './components/NavBar';
 import NotFound from './components/NotFound';
@@ -18,6 +19,7 @@ function App() {
 <Route element={<Home></Home>} path="/Home"/> 
 <Route element={<Login></Login>} path="/Login"/>
 <Route element={<Register></Register>} path="/Register" />
+<Route element={<Issues/>} path="/Issues" />
 
 
 <Route element={<Navigate to="/Login"/>} path="/" /> 
