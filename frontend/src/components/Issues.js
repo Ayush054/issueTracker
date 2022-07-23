@@ -11,7 +11,7 @@ const Issues = () => {
     const userSubmit = async (formdata)=>{
   console.log(formdata);
   
-  const response = await fetch('http://localhost:5000/user/add',{
+  const response = await fetch('http://localhost:5000/issue/add',{
     method:'POST',
     body: JSON.stringify(formdata),
     headers:{
@@ -19,7 +19,14 @@ const Issues = () => {
     }
   })
 
-
+  if(response.status === 200){
+    console.log('success');
+  
+    //navigate("/login")
+  }else{
+    console.log('error occured');
+   
+}
 }
 
 
