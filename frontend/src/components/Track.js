@@ -23,10 +23,15 @@ const Track = () => {
 
   const displayIssues = () => {
     if(!loading){
-      return issues.map(({title}) => (
-        <div className="card mt-5">
+      return issues.map(({title,type,assignedBy,createdAt,org,status}) => (
+        <div className="card mt-5 ms-5">
           <div className="card-body">
             <h3>{title}</h3>
+            <h4>Type : {type}</h4>
+            <h4>Assign Name : {assignedBy}</h4>
+            <h4>Time : {new Date(createdAt)}</h4>
+            <h4>Organisation : {org}</h4>
+            <h4>status : {status}</h4>
           </div>
         </div>
       ))
