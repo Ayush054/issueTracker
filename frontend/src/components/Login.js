@@ -1,10 +1,14 @@
 import { Button, Card, CardContent, TextField } from "@mui/material";
 import { Formik } from "formik";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
 const Login = () => {
+
+  const navigate = useNavigate();
+
   const userSubmit = async (formdata) => {
     console.log(formdata);
 
@@ -23,6 +27,9 @@ const Login = () => {
         title: "Wellcome!!👌",
         text: "Enter a new World!!",
       });
+      const data = await res.json();
+      sessionStorage.setItem("user", JSON.stringify(data));
+      navigate('/Issues');
       //navigate("/login")
     } else {
       console.log("Login error ");

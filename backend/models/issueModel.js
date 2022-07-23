@@ -8,7 +8,7 @@ const schemaObj=new Schema({
     assingedTo : {type:Types.ObjectId,ref:"users"},
     createdAt: Date,
     org :String,
-    status: String,
+    status: {type:String, default: "new"},
     closed:{type:Boolean, default: false}
 })
 
