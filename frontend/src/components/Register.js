@@ -73,7 +73,7 @@ const SignupSchema = Yup.object().shape({
  <TextField value={values.age} onChange={handleChange} id="age" sx={{mt:3}} fullWidth label="age"></TextField>
  <TextField  value={values.email} onChange={handleChange} id="email"sx={{mt:3}} fullWidth label="email" helperText="Invalid email" error></TextField>
  <TextField value={values.password} onChange={handleChange} id="password" sx={{mt:3}} fullWidth label=" password" type="password"></TextField>
- <Button type="submit" color="error" variant="contained"  sx={{mt:5}}>Login</Button>
+ <Button type="submit" color="error" variant="contained"  sx={{mt:5}}>Register</Button>
  </form>
 )}
       </Formik>

@@ -8,6 +8,7 @@ import Login from './components/Login';
 import NavBar from './components/NavBar';
 import NotFound from './components/NotFound';
 import Register from './components/Register';
+import Track from './components/Track';
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
 <Route element={<Login></Login>} path="/Login"/>
 <Route element={<Register></Register>} path="/Register" />
 <Route element={<Issues/>} path="/Issues" />
-
+<Route element={<Track/>} path="/Track" />
 
 <Route element={<Navigate to="/Login"/>} path="/" /> 
  

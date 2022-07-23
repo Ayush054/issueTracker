@@ -4,7 +4,7 @@ import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 const Issues = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem("user")))
 
   const userSubmit = async (formdata) => {
