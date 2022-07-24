@@ -16,7 +16,7 @@ res.json(data);
 
 
 router.get('/getall',(req,res) => {
-    Model.find()
+    Model.find().populate('assignedBy')
     .then((result) => {
         res.json(result);
     }).catch((err) => {

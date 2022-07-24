@@ -28,8 +28,8 @@ const Track = () => {
           <div className="card-body">
             <h3>{title}</h3>
             <h4>Type : {type}</h4>
-            <h4>Assign Name : {assignedBy}</h4>
-            <h4>Time : {new Date(createdAt)}</h4>
+            <h4>Assign Name : {assignedBy.name}</h4>
+            <h4>Time : {new Date(createdAt).toLocaleDateString()}</h4>
             <h4>Organisation : {org}</h4>
             <h4>status : {status}</h4>
           </div>
