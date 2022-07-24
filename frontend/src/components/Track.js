@@ -1,4 +1,5 @@
 //import { Card, CardContent } from "@mui/material"
+import { Button } from "@mui/material";
 import React, { useEffect, useState } from "react"
 
 const Track = () => {
@@ -21,6 +22,21 @@ const Track = () => {
     getDataFromBackend();
   }, [])
 
+  const [stat, setstat]=useState('new');
+
+  const updateStat=() => {
+    setstat('solved');
+  }
+
+const statusFun= (status) => { 
+  if(status=== 'solved'){
+return <i class="fas fa-check text-success   "></i>
+  }else if(status=== 'new')
+  {
+    return <i class="fas fa-plus  text-danger  "></i>
+  }
+}
+
   const displayIssues = () => {
     if(!loading){
       return issues.map(({title,type,assignedBy,createdAt,org,status}) => (
@@ -33,7 +49,8 @@ const Track = () => {
             <h4>Assign Name : {assignedBy.name}</h4>
             <h4>Time : {new Date(createdAt).toLocaleDateString()}</h4>
             <h4>Organisation : {org}</h4>
-            <h4>status : {status} </h4>
+            <h4>Status : {statusFun(status)} </h4>
+            <Button type="submit"  color="error" variant="contained" onClick={updateStat}>Close</Button>
           </div>
         </div>
       ))
@@ -41,7 +58,7 @@ const Track = () => {
   }
   
   return (
-    <div className="mt-5 w-50">
+    <div className="mt-5 ">
     <div className="container">
     
         <h2>All issues</h2>
