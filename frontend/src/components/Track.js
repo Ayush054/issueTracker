@@ -24,6 +24,8 @@ const Track = () => {
   const displayIssues = () => {
     if(!loading){
       return issues.map(({title,type,assignedBy,createdAt,org,status}) => (
+
+
         <div className="card mt-5 ms-5">
           <div className="card-body">
             <h3>{title}</h3>
@@ -31,7 +33,7 @@ const Track = () => {
             <h4>Assign Name : {assignedBy.name}</h4>
             <h4>Time : {new Date(createdAt).toLocaleDateString()}</h4>
             <h4>Organisation : {org}</h4>
-            <h4>status : {status}</h4>
+            <h4>status : {status} </h4>
           </div>
         </div>
       ))
@@ -40,10 +42,11 @@ const Track = () => {
   
   return (
     <div className="mt-5 w-50">
-      
+    <div className="container">
+    
         <h2>All issues</h2>
         {displayIssues()}
-      
+      </div>
     </div>
   )
 }

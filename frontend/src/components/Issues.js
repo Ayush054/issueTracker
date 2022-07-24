@@ -27,11 +27,25 @@ const Issues = () => {
     }
   }
 
+
+  const mystyle = {
+    padding:"20px",
+    background: "rgba(226, 224, 236, 0.158)",
+    boxSizing: "border-box",
+    borderRadius: "5px",
+    boxShadow: "2px 4px 0px 2px rgba(0, 0, 0, 0.219)",
+    backdropFilter: "blur(10px)"
+  };
+
   return (
-    <div className="col-md-4 mt-4 mx-auto">
-      <Card>
+    <div style={{
+      background: " url(https://wallpaperaccess.com/full/51363.jpg)  ",height:"100vh"
+    }} >
+
+    <div className="col-md-4 mx-auto">
+      <Card style={mystyle} >
         <CardContent>
-          <h1 className="text-center">Add Issues!!!</h1>
+          <h1 className="text-center mt-4">Add Issues!!!</h1>
           <hr />
           <Formik
             initialValues={{
@@ -66,6 +80,7 @@ const Issues = () => {
           </Formik>
         </CardContent>
       </Card>
+    </div>
     </div>
   )
 }

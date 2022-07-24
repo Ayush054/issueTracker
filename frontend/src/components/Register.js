@@ -62,13 +62,13 @@ const mystyle = {
 
   return (
     <div style={{
-       background: " url(https://wallpaperaccess.com/full/51363.jpg)  "
+       background: " url(https://wallpaperaccess.com/full/51363.jpg)  ",height:"100vh"
     }}>
 
-    <div className="col-md-4 mt-4 mx-auto"  >
+    <div className="col-md-4 mx-auto"  >
     <Card style={mystyle}>
       <CardContent>
-      <h1 className="text-center">REGISTER!!!</h1>
+      <h1 className="text-center mt-4">REGISTER!!!</h1>
       <hr />
       <Formik initialValues={{
         name:'',

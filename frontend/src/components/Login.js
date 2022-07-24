@@ -52,10 +52,10 @@ const Login = () => {
 
   return (
     <div style={{
-      //background: " url(https://wallpaperaccess.com/full/51363.jpg)  "
+      background: " url(https://wallpaperaccess.com/full/51363.jpg)  ",height:"100vh"
     }} >
-      <div className="col-md-4 mx-auto  mt-5" >
-        <Card style={mystyle}>
+      <div className="col-md-4 mx-auto  " >
+        <Card style={mystyle} >
           <CardContent>
             <Formik
               initialValues={{ email: "", password: "" }}
@@ -63,7 +63,7 @@ const Login = () => {
             >
               {({ values, handleChange, handleSubmit }) => (
                 <form onSubmit={handleSubmit}>
-                  <h2 className="text-center">Sign-in!!</h2>
+                  <h2 className="text-center mt-5">Sign-in!!</h2>
                   <hr />
 
                   <TextField
