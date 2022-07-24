@@ -22,10 +22,15 @@ const Track = () => {
     getDataFromBackend();
   }, [])
 
-  const [stat, setstat]=useState('new');
-
-  const updateStat=() => {
-    setstat('solved');
+  const updateStatus = async (issueid) => {
+    const res = fetch(url+'/issue/update/'+issueid, {method : 'PUT', body : JSON.stringify({status : 'solved'}), headers : {
+      'Content-Type' : 'application/json'
+    }})
+    
+    if(res.status === 200){
+      console.log('updated');
+      getDataFromBackend();
+    }
   }
 
 const statusFun= (status) => { 
@@ -39,7 +44,7 @@ return <i class="fas fa-check text-success   "></i>
 
   const displayIssues = () => {
     if(!loading){
-      return issues.map(({title,type,assignedBy,createdAt,org,status}) => (
+      return issues.map(({_id, title,type,assignedBy,createdAt,org,status}) => (
 
 
         <div className="card mt-5 ms-5">
@@ -50,7 +55,7 @@ return <i class="fas fa-check text-success   "></i>
             <h4>Time : {new Date(createdAt).toLocaleDateString()}</h4>
             <h4>Organisation : {org}</h4>
             <h4>Status : {statusFun(status)} </h4>
-            <Button type="submit"  color="error" variant="contained" onClick={updateStat}>Close</Button>
+            <Button  color="error" variant="contained" onClick={e => updateStatus(_id)}>Close</Button>
           </div>
         </div>
       ))
