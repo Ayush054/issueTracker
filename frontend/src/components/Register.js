@@ -51,10 +51,22 @@ const SignupSchema = Yup.object().shape({
   // .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.')
 });
 
+const mystyle = {
+  padding:"20px",
+  background: "rgba(226, 224, 236, 0.158)",
+  boxSizing: "border-box",
+  borderRadius: "5px",
+  boxShadow: "2px 4px 0px 2px rgba(0, 0, 0, 0.219)",
+  backdropFilter: "blur(10px)"
+};
 
   return (
-    <div className="col-md-4 mt-4 mx-auto">
-    <Card>
+    <div style={{
+       background: " url(https://wallpaperaccess.com/full/51363.jpg)  "
+    }}>
+
+    <div className="col-md-4 mt-4 mx-auto"  >
+    <Card style={mystyle}>
       <CardContent>
       <h1 className="text-center">REGISTER!!!</h1>
       <hr />
@@ -66,12 +78,12 @@ const SignupSchema = Yup.object().shape({
         email: ''
       }} onSubmit={userSubmit} validationSchema={SignupSchema}>
 {({values, handleChange, handleSubmit, errors}) => (
- <form action="" onSubmit={handleSubmit}>
+  <form action="" onSubmit={handleSubmit}>
 
  <TextField value={values.name} onChange={handleChange} id="name" sx={{mt:5}} fullWidth label="name"  helperText={errors.name} error={errors.name ? true:false}></TextField>
  <TextField value={values.mobile } onChange={handleChange} id="mobile" sx={{mt:3}} fullWidth label="Mobile number" ></TextField>
  <TextField value={values.age} onChange={handleChange} id="age" sx={{mt:3}} fullWidth label="age"></TextField>
- <TextField  value={values.email} onChange={handleChange} id="email"sx={{mt:3}} fullWidth label="email" helperText="Invalid email" error></TextField>
+ <TextField  value={values.email} onChange={handleChange} id="email"sx={{mt:3}} fullWidth label="email"></TextField>
  <TextField value={values.password} onChange={handleChange} id="password" sx={{mt:3}} fullWidth label=" password" type="password"></TextField>
  <Button type="submit" color="error" variant="contained"  sx={{mt:5}}>Register</Button>
  </form>
@@ -82,6 +94,7 @@ const SignupSchema = Yup.object().shape({
     
     </Card>
   </div> 
+</div>
   )
 }
 

@@ -41,10 +41,21 @@ const Login = () => {
     }
   };
 
+  const mystyle = {
+    padding:"20px",
+    background: "rgba(226, 224, 236, 0.158)",
+    boxSizing: "border-box",
+    borderRadius: "5px",
+    boxShadow: "2px 4px 0px 2px rgba(0, 0, 0, 0.219)",
+    backdropFilter: "blur(10px)"
+  };
+
   return (
-    <div>
-      <div className="col-md-4 mx-auto bg-light mt-5">
-        <Card>
+    <div style={{
+      //background: " url(https://wallpaperaccess.com/full/51363.jpg)  "
+    }} >
+      <div className="col-md-4 mx-auto  mt-5" >
+        <Card style={mystyle}>
           <CardContent>
             <Formik
               initialValues={{ email: "", password: "" }}
@@ -52,7 +63,7 @@ const Login = () => {
             >
               {({ values, handleChange, handleSubmit }) => (
                 <form onSubmit={handleSubmit}>
-                  <h2 className="text-center">Sign-in Here</h2>
+                  <h2 className="text-center">Sign-in!!</h2>
                   <hr />
 
                   <TextField
@@ -63,7 +74,7 @@ const Login = () => {
                     fullWidth
                     label="email"
                     // helperText="Invalid email"
-                    error
+                    //error
                   ></TextField>
                   <TextField
                     value={values.password}
