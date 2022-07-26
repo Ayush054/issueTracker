@@ -9,7 +9,8 @@ const schemaObj=new Schema({
     createdAt: Date,
     org :String,
     status: {type:String, default: "new"},
-    closed:{type:Boolean, default: false}
+    closed:{type:Boolean, default: false},
+    team:String
 })
 
 module.exports = model('issues', schemaObj);

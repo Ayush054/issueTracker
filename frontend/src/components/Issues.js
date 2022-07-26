@@ -62,6 +62,7 @@ const Issues = () => {
               <form action="" onSubmit={handleSubmit}>
                 <TextField value={values.title} onChange={handleChange} id="title" sx={{ mt: 3 }} fullWidth label="Title"></TextField>
                 <TextField value={values.type} onChange={handleChange} id="type" sx={{ mt: 5 }} fullWidth label="Type"></TextField>
+                <TextField value={values.team} onChange={handleChange} id="team" sx={{ mt: 5 }} fullWidth label="Team"></TextField>
                 
                 <TextField
                   value={values.assignedTo}

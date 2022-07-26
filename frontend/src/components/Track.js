@@ -44,13 +44,15 @@ return <i class="fas fa-check text-success   "></i>
 
   const displayIssues = () => {
     if(!loading){
-      return issues.map(({_id, title,type,assignedBy,createdAt,org,status}) => (
+      return issues.map(({_id, title,type,assignedBy,createdAt,org,status,team}) => (
 
 
         <div className="card mt-5 ms-5">
           <div className="card-body">
             <h3>{title}</h3>
             <h4>Type : {type}</h4>
+            <h4>Team : {team}</h4>
+
             <h4>Assign Name : {assignedBy.name}</h4>
             <h4>Time : {new Date(createdAt).toLocaleDateString()}</h4>
             <h4>Organisation : {org}</h4>
