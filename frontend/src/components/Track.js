@@ -49,8 +49,23 @@ return <i class="fas fa-check text-success   "></i>
 
         <div className="card mt-5 ms-5">
           <div className="card-body">
-            <h3>{title}</h3>
-            <h4>Type : {type}</h4>
+          <div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button
+        class="accordion-button"
+        type="button"
+        data-mdb-toggle="collapse"
+        data-mdb-target="#collapseOne"
+        aria-expanded="true"
+        aria-controls="collapseOne"
+      >
+        {title}
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-mdb-parent="#accordionExample">
+      <div class="accordion-body">
+      <h4>Type : {type}</h4>
             <h4>Team : {team}</h4>
 
             <h4>Assign Name : {assignedBy.name}</h4>
@@ -58,6 +73,11 @@ return <i class="fas fa-check text-success   "></i>
             <h4>Organisation : {org}</h4>
             <h4>Status : {statusFun(status)} </h4>
             <Button  color="error" variant="contained" onClick={e => updateStatus(_id)}>Close</Button>
+      </div>
+    </div>
+  </div>
+</div>
+           
           </div>
         </div>
       ))

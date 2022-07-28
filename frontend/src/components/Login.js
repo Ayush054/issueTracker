@@ -1,8 +1,9 @@
 import { Button, Card, CardContent, TextField } from "@mui/material";
 import { Formik } from "formik";
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import * as Yup from 'yup';
 
 
 const Login = () => {
@@ -49,20 +50,28 @@ const Login = () => {
     boxShadow: "2px 4px 0px 2px rgba(0, 0, 0, 0.219)",
     backdropFilter: "blur(10px)"
   };
+  
+  const SignupSchema = Yup.object().shape({
+    password: Yup.string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required'),
+  email: Yup.string().email('Invalid email').required('Required'),
+});
 
   return (
     <div style={{
       background: " url(https://wallpaperaccess.com/full/51363.jpg)  ",height:"100vh"
     }} >
       <div className="col-md-4 mx-auto  " >
-        <Card style={mystyle} >
+        <Card style={mystyle} className="" >
           <CardContent>
             <Formik
               initialValues={{ email: "", password: "" }}
               onSubmit={userSubmit}
             >
               {({ values, handleChange, handleSubmit }) => (
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} validationSchema={SignupSchema}>
                   <h2 className="text-center mt-5">Sign-in!!</h2>
                   <hr />
 
@@ -93,6 +102,8 @@ const Login = () => {
                   >
                     Login
                   </Button>
+                  <p className="mt-3">Need an account? <Link to="/Register" >Register</Link></p>
+
                 </form>
               )}
             </Formik>

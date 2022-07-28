@@ -1,7 +1,7 @@
 import { Button, Card, CardContent, TextField } from '@mui/material'
 import { Formik } from 'formik';
 import React from 'react'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import * as Yup from 'yup';
 
@@ -86,6 +86,8 @@ const mystyle = {
  <TextField  value={values.email} onChange={handleChange} id="email"sx={{mt:3}} fullWidth label="email"></TextField>
  <TextField value={values.password} onChange={handleChange} id="password" sx={{mt:3}} fullWidth label=" password" type="password"></TextField>
  <Button type="submit" color="error" variant="contained"  sx={{mt:5}}>Register</Button>
+ <p className="mt-3">Already a user? <Link to="/Login" >Login</Link></p>
+
  </form>
 )}
       </Formik>
