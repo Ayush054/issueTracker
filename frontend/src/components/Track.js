@@ -47,8 +47,8 @@ const Track = () => {
   const displayIssues = () => {
     if (!loading) {
       return issues.map(({ _id, title, type, assignedBy, createdAt, org, status, team }) => (
-        <div className="card mt-5 ms-5">
-          <div className="card-body">
+        <div className="card mt-5 ms-5" >
+          <div className="card-body" >
             <div class="accordion">
               <div class="accordion-item">
                 <h2 class="accordion-header">
@@ -62,7 +62,7 @@ const Track = () => {
                     {title}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     {new Date(createdAt).toLocaleDateString()}
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span className="float-end">{statusFun(status)}</span>
+                    <span className="float-start">{statusFun(status)}</span>
                   </button>
                 </h2>
                 <div id={_id} class="accordion-collapse collapse show" aria-labelledby="headingOne" data-mdb-parent="#accordionExample">
@@ -88,9 +88,9 @@ const Track = () => {
   }
 
   return (
-    <div className="mt-5 ">
+    <div  style={{backgroundColor:"rgb(245 245 255)",height:"100vh"}}>
       <div className="container">
-        <h2>All issues</h2>
+        <h2 className="mt-5 ">All issues</h2>
         {displayIssues()}
       </div>
     </div>

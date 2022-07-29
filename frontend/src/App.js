@@ -10,6 +10,9 @@ import NotFound from './components/NotFound';
 import Register from './components/Register';
 import Track from './components/Track';
 import Authorisor from './components/Auth';
+//import Register1 from './components/Register1';
+//import Login1 from './components/Login1';
+import Team from './components/Team';
 
 function App() {
   return (
@@ -20,9 +23,12 @@ function App() {
       <Routes>
 <Route element={<Home></Home>} path="/Home"/> 
 <Route element={<Login></Login>} path="/Login"/>
+{/* <Route element={<Login1></Login1>} path="/Login1"/> */}
 <Route element={<Register></Register>} path="/Register" />
+{/* <Route element={<Register1></Register1>} path="/Register1" /> */}
 <Route element={<Authorisor> <Issues/> </Authorisor>} path="/Issues" />
 <Route element={<Authorisor> <Track/> </Authorisor>} path="/Track" />
+<Route element={<Authorisor> <Team/> </Authorisor>} path="/Team" />
 
 <Route element={<Navigate to="/Login"/>} path="/" /> 
  

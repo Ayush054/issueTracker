@@ -1,76 +1,111 @@
+import React from 'react';
+import "./register.css";
 import { Button, Card, CardContent, TextField } from '@mui/material'
 import { Formik } from 'formik';
-import React from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import * as Yup from 'yup';
 
+
 const Register = () => {
 
-  const navigate= useNavigate();
+    const navigate= useNavigate();
+    
+    const userSubmit = async (formdata)=>{
+  console.log(formdata);
   
-  const userSubmit = async (formdata)=>{
-console.log(formdata);
-
-const response = await fetch('http://localhost:5000/user/add',{
-  method:'POST',
-  body: JSON.stringify(formdata),
-  headers:{
-    'Content-Type' : 'application/json'
-  }
-})
-if(response.status === 200){
-  console.log('success');
-  Swal.fire({
-    icon:"success",
-    title: "Well Done!!👌",
-    text: "Wonderful JOB!!"
+  const response = await fetch('http://localhost:5000/user/add',{
+    method:'POST',
+    body: JSON.stringify(formdata),
+    headers:{
+      'Content-Type' : 'application/json'
+    }
   })
-  navigate("/login")
-}else{
-  console.log('error occured');
-  Swal.fire({
-    icon:"error",
-    title: "Try Again!!😒",
-    text: "search for error!!"
+  if(response.status === 200){
+    console.log('success');
+    Swal.fire({
+      icon:"success",
+      title: "Well Done!!👌",
+      text: "Wonderful JOB!!"
+    })
+    navigate("/login")
+  }else{
+    console.log('error occured');
+    Swal.fire({
+      icon:"error",
+      title: "Try Again!!😒",
+      text: "search for error!!"
+    });
+  
+  }
+  
+  }
+  
+  const SignupSchema = Yup.object().shape({
+    name: Yup.string()
+      .min(2, 'Too Short!')
+      .max(10, 'Too Long!')
+      .required('Required'),
+    email: Yup.string().email('Invalid email').required('Required'),
+    // mobile:Yup.string().max(11, 'check number').required('Required'),
+    // password: Yup.string().required('No password provided.') 
+    // .min(8, 'Password is too short - should be 8 chars minimum.')
+    // .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.')
   });
+  
 
-}
 
-}
-
-const SignupSchema = Yup.object().shape({
-  name: Yup.string()
-    .min(2, 'Too Short!')
-    .max(10, 'Too Long!')
-    .required('Required'),
-  email: Yup.string().email('Invalid email').required('Required'),
-  // mobile:Yup.string().max(11, 'check number').required('Required'),
-  // password: Yup.string().required('No password provided.') 
-  // .min(8, 'Password is too short - should be 8 chars minimum.')
-  // .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.')
-});
-
-const mystyle = {
-  padding:"20px",
-  background: "rgba(226, 224, 236, 0.158)",
-  boxSizing: "border-box",
-  borderRadius: "5px",
-  boxShadow: "2px 4px 0px 2px rgba(0, 0, 0, 0.219)",
-  backdropFilter: "blur(10px)"
-};
-
-  return (
-    <div style={{
-       background: " url(https://wallpaperaccess.com/full/51363.jpg)  ",height:"100vh"
-    }}>
-
-    <div className="col-md-4 mx-auto"  >
-    <Card style={mystyle}>
-      <CardContent>
-      <h1 className="text-center mt-4">REGISTER!!!</h1>
-      <hr />
-      <Formik initialValues={{
+  return (<div
+    data-draggable="true"
+    style={{position: "relative"}}
+    draggable="false"
+    class=""
+  >
+   
+     <section
+      draggable="false"
+      class="overflow-hidden pt-0"
+      data-v-271253ee=""
+    >
+      <section class="mb-10 background-radial-gradient overflow-hidden">
+       
+        <div
+          class="container px-4 py-5 px-md-5 text-center text-lg-start"
+        >
+          <div class="row gx-lg-5 align-items-center mb-5">
+            <div class="col-lg-6 mb-5 mb-lg-0" style={{zIndex: "10"}}>
+              <h1
+                className="my-5 display-3 fw-bold ls-tight"
+                style={{color:" hsl(218, 81%, 95%)"}}
+              >
+                <span>The best offer</span> <br />
+                <span style={{color:"hsl(218, 81%, 75%)"}}
+                  >for your Project</span
+                >
+              </h1>
+              <p
+                class="mb-4 opacity-70"
+                style={{color:" hsl(218, 81%, 85%)"}}
+              >
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Temporibus, expedita iusto veniam atque, magni tempora
+                mollitia dolorum consequatur nulla, neque debitis eos
+                reprehenderit quasi ab ipsum nisi dolorem modi. Quos?
+              </p>
+            </div>
+            <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+              <div
+                id="radius-shape-1"
+                class="position-absolute rounded-circle shadow-5-strong"
+              ></div>
+              <div
+                id="radius-shape-2"
+                class="position-absolute shadow-5-strong"
+              ></div>
+              <div class="card bg-glass">
+                <div class="card-body px-4 py-5 px-md-5">
+                  
+                <Formik initialValues={{
         name:'',
         age:'',
         password: '',
@@ -79,24 +114,115 @@ const mystyle = {
       }} onSubmit={userSubmit} validationSchema={SignupSchema}>
 {({values, handleChange, handleSubmit, errors}) => (
   <form action="" onSubmit={handleSubmit}>
+                 
+                    <h1 className="text-center mt-4">REGISTER!!!</h1>
+      <hr />
 
- <TextField value={values.name} onChange={handleChange} id="name" sx={{mt:5}} fullWidth label="name"  helperText={errors.name} error={errors.name ? true:false}></TextField>
- <TextField value={values.mobile } onChange={handleChange} id="mobile" sx={{mt:3}} fullWidth label="Mobile number" ></TextField>
- <TextField value={values.age} onChange={handleChange} id="age" sx={{mt:3}} fullWidth label="age"></TextField>
- <TextField  value={values.email} onChange={handleChange} id="email"sx={{mt:3}} fullWidth label="email"></TextField>
- <TextField value={values.password} onChange={handleChange} id="password" sx={{mt:3}} fullWidth label=" password" type="password"></TextField>
- <Button type="submit" color="error" variant="contained"  sx={{mt:5}}>Register</Button>
+
+                    <div class="form-outline mb-4">
+                    <TextField value={values.name} onChange={handleChange} id="name" sx={{mt:2}} fullWidth label="name"  helperText={errors.name} error={errors.name ? true:false}></TextField>
+ 
+                      <div class="form-notch">
+                        <div
+                          class="form-notch-leading"
+                          style={{width: "9px"}}
+                        ></div>
+                        <div
+                          class="form-notch-middle"
+                          style={{width: "72.8px"}}
+                        ></div>
+                        <div class="form-notch-trailing"></div>
+                      </div>
+                    </div>
+
+
+                    <div class="form-outline mb-4">
+                    <TextField value={values.mobile } onChange={handleChange} id="mobile" sx={{mt:1}} fullWidth label="Mobile number" ></TextField>
+ 
+                      <div class="form-notch">
+                        <div
+                          class="form-notch-leading"
+                          style={{width: "9px"}}
+                        ></div>
+                        <div
+                          class="form-notch-middle"
+                          style={{width: "72.8px"}}
+                        ></div>
+                        <div class="form-notch-trailing"></div>
+                      </div>
+                    </div>
+
+
+                    <div class="form-outline mb-4">
+                    <TextField value={values.age} onChange={handleChange} id="age" sx={{mt:1}} fullWidth label="age"></TextField>
+ 
+                      <div class="form-notch">
+                        <div
+                          class="form-notch-leading"
+                          style={{width: "9px"}}
+                        ></div>
+                        <div
+                          class="form-notch-middle"
+                          style={{width: "72.8px"}}
+                        ></div>
+                        <div class="form-notch-trailing"></div>
+                      </div>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                    <TextField  value={values.email} onChange={handleChange} id="email"sx={{mt:1}} fullWidth label="email"></TextField>
+    
+                      <div class="form-notch">
+                        <div
+                          class="form-notch-leading"
+                          style={{width: "9px"}}
+                        ></div>
+                        <div
+                          class="form-notch-middle"
+                          style={{width: "72.8px"}}
+                        ></div>
+                        <div class="form-notch-trailing"></div>
+                      </div>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                    <TextField value={values.password} onChange={handleChange} id="password" sx={{mt:1}} fullWidth label=" password" type="password"></TextField>
+ 
+                     
+                      <div class="form-notch">
+                        <div
+                          class="form-notch-leading"
+                          style={{width: "9px"}}
+                        ></div>
+                        <div
+                          class="form-notch-middle"
+                          style={{width: "72.8px"}}
+                        ></div>
+                        <div class="form-notch-trailing"></div>
+                      </div>
+                    </div>
+                   
+                     
+                 
+                  
+<Button type="submit" color="primary" variant="contained" className='btn-block mb-4' sx={{mt:2}}>Register</Button>
  <p className="mt-3">Already a user? <Link to="/Login" >Login</Link></p>
 
- </form>
+                
+                   
+                    </form>
 )}
       </Formik>
-       
-      </CardContent>
-    
-    </Card>
-  </div> 
-</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+ 
+  </div>
+
   )
 }
 

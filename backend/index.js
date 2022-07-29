@@ -19,6 +19,7 @@ const port = 5000;
 
 const userRouter= require('./routers/userRouter');
 const issueRouter= require('./routers/issueRouter');
+const teamRouter= require('./routers/teamRouter');
  
 const cors = require('cors');
 app.use(express.json()); 
@@ -27,6 +28,7 @@ app.use(cors({origin: ['http://localhost:3000'] }))
 
 app.use('/user', userRouter);
 app.use('/issue', issueRouter);
+app.use('/team', teamRouter);
 
 
 app.get('/',(req,res) =>{

@@ -30,7 +30,7 @@ const Issues = () => {
 
   const mystyle = {
     padding:"20px",
-    background: "rgba(226, 224, 236, 0.158)",
+    background: "rgb(255 255 255 / 60%)",
     boxSizing: "border-box",
     borderRadius: "5px",
     boxShadow: "2px 4px 0px 2px rgba(0, 0, 0, 0.219)",
