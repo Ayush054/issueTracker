@@ -1,6 +1,6 @@
 import React from 'react';
 import "./register.css";
-import { Button, Card, CardContent, TextField } from '@mui/material'
+import { Button, TextField } from '@mui/material'
 import { Formik } from 'formik';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';

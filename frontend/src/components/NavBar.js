@@ -54,7 +54,11 @@ const NavBar = ({darkTheme, setDarkTheme}) => {
                 Add Issues
               </NavLink>
             </li>
-            
+            <li class="nav-item">
+              <NavLink className="nav-link" to="/Team">
+                Add team
+              </NavLink>
+            </li>
             {/* <li class="nav-item">
               <Switch checked={darkTheme} onChange={(e, v)=> {setDarkTheme(v) }} ></Switch>
             </li> */}

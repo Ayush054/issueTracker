@@ -62,7 +62,7 @@ const Track = () => {
                     {title}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     {new Date(createdAt).toLocaleDateString()}
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span className="float-start">{statusFun(status)}</span>
+                    <span className="float-start" >{statusFun(status)}</span>
                   </button>
                 </h2>
                 <div id={_id} class="accordion-collapse collapse show" aria-labelledby="headingOne" data-mdb-parent="#accordionExample">
