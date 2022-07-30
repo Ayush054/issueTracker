@@ -5,8 +5,8 @@ const schemaObj=new Schema({
     title:String,
     description: String, 
     createdAt: Date,
-    member:String
+    members:Array
    
 })
 
-module.exports = model('title', schemaObj);
+module.exports = model('teams', schemaObj);
