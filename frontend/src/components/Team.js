@@ -1,6 +1,6 @@
 import { Button, Card, CardContent, TextField } from "@mui/material";
 import { Formik } from "formik";
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import * as Yup from "yup";
@@ -8,6 +8,32 @@ import * as Yup from "yup";
 const Team = () => {
 
   const url = "http://localhost:5000";
+  const navigate = useNavigate();
+  const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem("user")))
+
+  const updateUser = (teamid) => {
+    fetch(url+'/user/update/'+currentUser._id, {
+      method: 'PUT',
+      body: JSON.stringify({
+        team: teamid,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }).then(res => res.json())
+    .then(data => {
+      console.log(data)
+      setCurrentUser(data)
+      sessionStorage.setItem("user", JSON.stringify(data))
+
+      Swal.fire({
+        title: "Success",
+        text: "Team Created Successfully",
+        icon: "success",
+      })
+      navigate("/Issues");
+    })
+  }
 
   const userSubmit = async (formdata) => {
     console.log(formdata);
@@ -34,6 +60,11 @@ const Team = () => {
         text: "search for error!!",
       });
     }
+
+    response.json().then(data => {
+      console.log(data);
+      updateUser(data._id);
+    })
   };
 
   const getAllTeams = () => {
@@ -82,8 +113,8 @@ const Team = () => {
               initialValues={{
                 title: "",
                 description: "",
-                createdAt: "",
-                member: "",
+                createdAt: new Date(),
+                members: [currentUser._id],
               }}
               onSubmit={userSubmit}
               validationSchema={SignupSchema}
@@ -108,22 +139,7 @@ const Team = () => {
                     fullWidth
                     label="description"
                   ></TextField>
-                  <TextField
-                    value={values.createdAt}
-                    onChange={handleChange}
-                    id="createdAt"
-                    sx={{ mt: 3 }}
-                    fullWidth
-                    label="CreatedAt"
-                  ></TextField>
-                  <TextField
-                    value={values.member}
-                    onChange={handleChange}
-                    id="member"
-                    sx={{ mt: 3 }}
-                    fullWidth
-                    label="member"
-                  ></TextField>
+                  
                   <Button
                     type="submit"
                     color="error"

@@ -1,12 +1,16 @@
 //import { Card, CardContent } from "@mui/material"
 import { Button } from "@mui/material"
 import React, { useEffect, useState } from "react"
+import Swal from "sweetalert2"
 
 const Track = () => {
   const url = "http://localhost:5000"
 
   const [issues, setIssues] = useState([])
   const [loading, setLoading] = useState(false)
+  const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem("user")))
+
+  const [userToAdd, setUserToAdd] = useState("");
 
   const getDataFromBackend = async () => {
     setLoading(true)
@@ -20,6 +24,63 @@ const Track = () => {
   useEffect(() => {
     getDataFromBackend()
   }, [])
+
+  const updateUser = (teamid, userid) => {
+    fetch(url+'/user/update/'+userid, {
+      method: 'PUT',
+      body: JSON.stringify({
+        team: teamid,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }).then(res => res.json())
+    .then(data => {
+      console.log(data)
+
+      fetch(url+'/team/pushupdate/'+currentUser.team._id, {
+        method: 'PUT',
+        body: JSON.stringify({
+          members: data._id,
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }).then(res => {
+        console.log(res.status);
+        Swal.fire({
+          title: "Success",
+          text: "Member Added Successfully",
+          icon: "success",
+        })
+      })
+      
+    })
+  }
+
+  const addMember = () => {
+    fetch(url+'/user/getbyemail/'+userToAdd)
+    .then(res => res.json())
+    .then(data => {
+      console.log(data)
+      if(data){
+
+        if(!data.team){
+          updateUser(currentUser.team._id, data._id)
+        }else{
+          Swal.fire({
+            icon: "error",
+            title: "User Already in a Team",
+            text: "User Already in a Team",
+          });
+        }
+
+      }else{
+        console.log('user not found');
+      }
+    })
+  }
+
 
   const updateStatus = async (issueid) => {
     const res = fetch(url + "/issue/update/" + issueid, {
@@ -89,6 +150,13 @@ const Track = () => {
 
   return (
     <div  style={{backgroundColor:"rgb(245 245 255)",height:"100vh"}}>
+      <header>
+        <div className="container">
+
+          <input className="form-control" onChange={e => setUserToAdd(e.target.value) } />
+          <button onClick={addMember}>Add New Member</button>
+        </div>
+        </header>
       <div className="container">
         <h2 className="mt-5 ">All issues</h2>
         {displayIssues()}

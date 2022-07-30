@@ -2,10 +2,13 @@ import { Button } from "@mui/material"
 import { Formik } from "formik"
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import Swal from "sweetalert2"
 
 const Issues = () => {
   const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem("user")))
+  const url = "http://localhost:5000";
+
 
   const userSubmit = async (formdata) => {
     console.log(formdata)
@@ -27,13 +30,14 @@ const Issues = () => {
     }
   }
 
+  
   return (
 
     <div id="preview" class="preview">
     <div style={{display: "none"}}></div>
     <div>
       <div data-draggable="true" class="" style={{position: "relative"}}>
-       
+        
         <section draggable="false" class="overflow-hidden pt-1" data-v-271253ee="">
           <section class="mb-10">
           
@@ -52,6 +56,7 @@ const Issues = () => {
               initialValues={{
                 title: "",
                 type: "",
+                team: currentUser.team.title,
                 assignedBy: currentUser._id,
                 assignedTo: "",
                 org: "",
