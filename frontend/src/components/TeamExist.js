@@ -11,7 +11,7 @@ const CheckTeam = ({children}) => {
       if (currentUser.team) {
         Swal.fire({
           icon: "info",
-          title: "OOops!!",
+          title: "Oops!!",
           text: "You are already in a team",
         });
         return <Navigate to="/Issues" />;
