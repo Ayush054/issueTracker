@@ -36,8 +36,9 @@ function App() {
           <Route
             element={
               <Authorisor>
-                {" "}
+                <CheckTeam>
                 <Issues />
+                </CheckTeam>
               </Authorisor>
             }
             path="/Issues"
