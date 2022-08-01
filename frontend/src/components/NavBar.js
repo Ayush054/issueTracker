@@ -1,8 +1,20 @@
 //import { Switch } from "@mui/material";
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import React, { useContext, useState } from "react"
+import { Link, NavLink, useNavigate } from "react-router-dom"
+import { UserContext } from "../useContext";
 
-const NavBar = ({darkTheme, setDarkTheme}) => {
+const NavBar = ({ darkTheme, setDarkTheme }) => {
+
+  const navigate = useNavigate();
+  
+  const {loggedIn, setLoggedIn} = useContext(UserContext);
+
+
+  const logout = () => {
+    sessionStorage.removeItem("user")
+    setLoggedIn(false)
+    navigate('/login');
+  }
   return (
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
@@ -13,20 +25,21 @@ const NavBar = ({darkTheme, setDarkTheme}) => {
           data-mdb-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent"
           aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
+          aria-label="Toggle navigation">
           <i class="fas fa-bars"></i>
         </button>
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <a className="navbar-brand mt-2 mt-lg-0" href="/home">
-            <img
-              src="https://st2.depositphotos.com/2100659/6870/v/950/depositphotos_68708405-stock-illustration-letter-a-vector-logo-concept.jpg"
-              height="35"
-              alt="MDB Logo"
-              loading="lazy"
-            />
-          </a>
+          
+            <a className="navbar-brand mt-2 mt-lg-0">
+              <img
+                src="https://st2.depositphotos.com/2100659/6870/v/950/depositphotos_68708405-stock-illustration-letter-a-vector-logo-concept.jpg"
+                height="35"
+                alt="MDB Logo"
+                loading="lazy"
+              />
+            </a>
+          
 
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
@@ -66,17 +79,15 @@ const NavBar = ({darkTheme, setDarkTheme}) => {
         </div>
 
         <div class="d-flex align-items-center">
-         
-         
           <div class="dropdown">
+          {loggedIn ? (
             <Link
               className="dropdown-toggle d-flex align-items-center hidden-arrow"
               to="#"
               id="navbarDropdownMenuAvatar"
               role="button"
               data-mdb-toggle="dropdown"
-              aria-expanded="false"
-            >
+              aria-expanded="false">
               <img
                 src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
                 class="rounded-circle"
@@ -85,31 +96,21 @@ const NavBar = ({darkTheme, setDarkTheme}) => {
                 loading="lazy"
               />
             </Link>
-            <ul
-              class="dropdown-menu dropdown-menu-end"
-              aria-labelledby="navbarDropdownMenuAvatar"
-            >
+            ) : (
+              ""
+            )}
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
               <li>
-              <Link className="dropdown-item" to="#">
-                   My profile
-                </Link>
-              </li>
-              <li>
-                <Link className="dropdown-item" to="#">
-                  Settings
-                </Link>
-              </li>
-              <li>
-              <Link className="dropdown-item" to="#">
-                   Logout
-                </Link>
+                <button className="dropdown-item" onClick={logout}>
+                  Logout
+                </button>
               </li>
             </ul>
           </div>
         </div>
       </div>
     </nav>
-  );
-};
+  )
+}
 
-export default NavBar;
+export default NavBar
