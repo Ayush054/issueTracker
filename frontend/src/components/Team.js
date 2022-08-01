@@ -127,7 +127,7 @@ const Team = () => {
                     id="title"
                     sx={{ mt: 5 }}
                     fullWidth
-                    label="tile"
+                    label="title"
                     helperText={errors.name}
                     error={errors.name ? true : false}
                   ></TextField>

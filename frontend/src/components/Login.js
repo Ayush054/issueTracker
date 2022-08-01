@@ -59,8 +59,8 @@ const Login = () => {
  
  
     return (
-        <section draggable="false" class="container pt-5" data-v-271253ee="">
-        <section class="mb-10 background-radial-gradient">
+        <section draggable="false" class="overflow-hidden pt-0 " data-v-271253ee="">
+        <section class="mb-10 background-radial-gradient overflow-hidden" style={{height:"90vh"}}>
       
     <div
     class="container px-4 py-5 px-md-5 text-center text-lg-start"
