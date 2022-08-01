@@ -1,13 +1,26 @@
 import { Button } from "@mui/material"
 import { Formik } from "formik"
-import React, { useState } from "react"
+import React, { useState,useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import Swal from "sweetalert2"
 
 const Issues = () => {
   const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem("user")))
-  const url = "http://localhost:5000";
+  // const [team,setTeam] = useState(JSON.parse(sessionStorage.getItem("team")))
+  // useEffect(()=>{
+  // if (!currentUser.team.title){
+  //   Swal.fire({
+  //     icon: "info",
+  //     title: "OOops!!",
+  //     text: "You are not in a team",
+  //   });
+  //   navigate('/track');
+  // }
+  
+  // },[])
+  
+ const url = "http://localhost:5000";
 
 
   const userSubmit = async (formdata) => {
@@ -23,10 +36,20 @@ const Issues = () => {
 
     if (response.status === 200) {
       console.log("success")
+      Swal.fire({
+        title: "Success",
+        text: "Issues Added Successfully",
+        icon: "success",
+      })
 
-      //navigate("/login")
+      navigate("/Track")
     } else {
       console.log("error occured")
+      Swal.fire({
+        icon:"error",
+        title: "Try Again!!😒",
+        text: "search for error!!"
+      });
     }
   }
 
@@ -96,7 +119,7 @@ const Issues = () => {
                         </div>
                       </div>
 
-                      <div class="form-outline mb-4"> <input type="text" value={values.assignedTo} onChange={handleChange} id="assignTo" class="form-control"/> <label
+                  <div class="form-outline mb-4"> <input type="text" value={values.assignedTo} onChange={handleChange} id="assignTo" class="form-control"/> <label
                           class="form-label" for="assignTo" style={{marginLeft: "0px;"}}>Assigned To</label>
                         <div class="form-notch">
                           <div class="form-notch-leading" style={{width: "9px"}}></div>
