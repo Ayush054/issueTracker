@@ -14,11 +14,17 @@ import Authorisor from "./components/Auth";
 //import Login1 from './components/Login1';
 import Team from "./components/Team";
 import CheckTeam from "./components/TeamExist";
+import { UserProvider } from "./useContext";
+import { useState } from "react";
 // import Issues1 from './components/Issues1';
 
 function App() {
+  const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem("user")))
   return (
     <div>
+      <UserProvider currentUser={currentUser}>
+
+      
       <BrowserRouter>
         <NavBar />
         <Routes>
@@ -31,7 +37,7 @@ function App() {
             element={
               <Authorisor>
                 {" "}
-                <Issues />{" "}
+                <Issues />
               </Authorisor>
             }
             path="/Issues"
@@ -61,6 +67,7 @@ function App() {
           <Route element={<NotFound />} path="*" />
         </Routes>
       </BrowserRouter>
+      </UserProvider>
     </div>
   );
 }
