@@ -6,7 +6,6 @@ const schemaObj=new Schema({
     description: String, 
     createdAt: Date,
     members:Array
-   
 })
 
 module.exports = model('teams', schemaObj);

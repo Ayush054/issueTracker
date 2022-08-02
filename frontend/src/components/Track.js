@@ -1,16 +1,18 @@
 //import { Card, CardContent } from "@mui/material"
 import { Button } from "@mui/material"
-import React, { useEffect, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import Swal from "sweetalert2"
+import { UserContext } from "../useContext"
 
 const Track = () => {
   const url = "http://localhost:5000"
 
   const [issues, setIssues] = useState([])
   const [loading, setLoading] = useState(false)
-  const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem("user")))
 
   // const [userToAdd, setUserToAdd] = useState("");
+
+  const {currentUser} = useContext(UserContext);
 
   const getDataFromBackend = async () => {
     setLoading(true)
@@ -183,6 +185,9 @@ const Track = () => {
         </header> */}
       <div className="container">
         <h2 className="mt-5 ">All issues</h2>
+        <h3>Team Name : {currentUser.team ? currentUser.team.title : 
+          'No Team Created'
+        }</h3>
         {displayIssues()}
       </div>
     </div>
