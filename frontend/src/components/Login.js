@@ -12,7 +12,7 @@ const Login = () => {
 
     const navigate = useNavigate();
 
-    const {setLoggedIn} = useContext(UserContext);
+    const {setLoggedIn, setCurrentUser} = useContext(UserContext);
 
     const userSubmit = async (formdata) => {
       console.log(formdata);
@@ -34,6 +34,7 @@ const Login = () => {
         });
         const data = await res.json();
         sessionStorage.setItem("user", JSON.stringify(data));
+        setCurrentUser(data);
         setLoggedIn(true);
         navigate('/Track');
         //navigate("/login")

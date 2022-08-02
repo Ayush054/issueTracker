@@ -7,10 +7,10 @@ const NavBar = ({ darkTheme, setDarkTheme }) => {
 
   const navigate = useNavigate();
   
-  const {loggedIn, setLoggedIn} = useContext(UserContext);
-  const [currentUser, setCurrentUser] = useState(
-    JSON.parse(sessionStorage.getItem("user"))
-  );
+  const {loggedIn, setLoggedIn, currentUser} = useContext(UserContext);
+  // const [currentUser, setCurrentUser] = useState(
+  //   JSON.parse(sessionStorage.getItem("user"))
+  // );
 
 
 

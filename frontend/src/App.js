@@ -21,9 +21,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem("user")))
   return (
     <div>
-      <UserProvider currentUser={currentUser}>
-
-      
+      <UserProvider user={currentUser}>
       <BrowserRouter>
         <NavBar />
         <Routes>
