@@ -107,7 +107,7 @@ const Team = () => {
       <div className="col-md-4 mx-auto">
         <Card style={mystyle}>
           <CardContent>
-            <h1 className="text-center mt-4">ADD Team!!!</h1>
+            <h1 className="text-center mt-4">Create a New Team!!!</h1>
             <hr />
             <Formik
               initialValues={{

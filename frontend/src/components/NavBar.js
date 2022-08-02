@@ -8,6 +8,10 @@ const NavBar = ({ darkTheme, setDarkTheme }) => {
   const navigate = useNavigate();
   
   const {loggedIn, setLoggedIn} = useContext(UserContext);
+  const [currentUser, setCurrentUser] = useState(
+    JSON.parse(sessionStorage.getItem("user"))
+  );
+
 
 
   const logout = () => {
@@ -69,18 +73,25 @@ const NavBar = ({ darkTheme, setDarkTheme }) => {
             </li>
             <li class="nav-item">
               <NavLink className="nav-link" to="/Team">
-                Add team
+                Create team
+              </NavLink>
+            </li>
+            <li class="nav-item">
+              <NavLink className="nav-link" to="/AddMember">
+                Add Member
               </NavLink>
             </li>
             {/* <li class="nav-item">
               <Switch checked={darkTheme} onChange={(e, v)=> {setDarkTheme(v) }} ></Switch>
             </li> */}
+
           </ul>
         </div>
 
-        <div class="d-flex align-items-center">
-          <div class="dropdown">
           {loggedIn ? (
+        <div class="d-flex align-items-center">
+          <span className="me-2">Hi, {currentUser.name}!</span>
+          <div class="dropdown">
             <Link
               className="dropdown-toggle d-flex align-items-center hidden-arrow"
               to="#"
@@ -96,10 +107,13 @@ const NavBar = ({ darkTheme, setDarkTheme }) => {
                 loading="lazy"
               />
             </Link>
-            ) : (
-              ""
-            )}
+        
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+            <li>
+                <button className="dropdown-item" >
+                  Settings
+                </button>
+              </li>
               <li>
                 <button className="dropdown-item" onClick={logout}>
                   Logout
@@ -108,6 +122,9 @@ const NavBar = ({ darkTheme, setDarkTheme }) => {
             </ul>
           </div>
         </div>
+          ) : (
+            ""
+          )}
       </div>
     </nav>
   )

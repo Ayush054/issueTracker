@@ -10,13 +10,12 @@ import NotFound from "./components/NotFound";
 import Register from "./components/Register";
 import Track from "./components/Track";
 import Authorisor from "./components/Auth";
-//import Register1 from './components/Register1';
-//import Login1 from './components/Login1';
 import Team from "./components/Team";
 import CheckTeam from "./components/TeamExist";
+import NotCheckTeam from "./components/NotTeamExist";
 import { UserProvider } from "./useContext";
 import { useState } from "react";
-// import Issues1 from './components/Issues1';
+import AddMember from "./components/AddMember";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem("user")))
@@ -30,20 +29,17 @@ function App() {
         <Routes>
           <Route element={<Home></Home>} path="/Home" />
           <Route element={<Login></Login>} path="/Login" />
-          {/* <Route element={<Login1></Login1>} path="/Login1"/> */}
           <Route element={<Register></Register>} path="/Register" />
-          {/* <Route element={<Register1></Register1>} path="/Register1" /> */}
           <Route
             element={
               <Authorisor>
-                <CheckTeam>
+                <NotCheckTeam>
                 <Issues />
-                </CheckTeam>
+                </NotCheckTeam>
               </Authorisor>
             }
             path="/Issues"
           />
-          {/* <Route element={<Authorisor> <Issues1/> </Authorisor>} path="/Issues1" /> */}
           <Route
             element={
               <Authorisor>
@@ -62,6 +58,13 @@ function App() {
             }
             path="/Team"
           />
+           <Route element={
+           <Authorisor>
+           <NotCheckTeam>
+             <AddMember></AddMember>
+          </NotCheckTeam></Authorisor>
+           } path="/AddMember" />
+          
 
           <Route element={<Navigate to="/Login" />} path="/" />
 

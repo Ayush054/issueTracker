@@ -10,7 +10,7 @@ const Track = () => {
   const [loading, setLoading] = useState(false)
   const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem("user")))
 
-  const [userToAdd, setUserToAdd] = useState("");
+  // const [userToAdd, setUserToAdd] = useState("");
 
   const getDataFromBackend = async () => {
     setLoading(true)
@@ -25,67 +25,82 @@ const Track = () => {
     getDataFromBackend()
   }, [])
 
-  const updateUser = (teamid, userid) => {
-    fetch(url+'/user/update/'+userid, {
-      method: 'PUT',
-      body: JSON.stringify({
-        team: teamid,
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    }).then(res => res.json())
-    .then(data => {
-      console.log(data)
+  // const updateUser = (teamid, userid) => {
+  //   fetch(url+'/user/update/'+userid, {
+  //     method: 'PUT',
+  //     body: JSON.stringify({
+  //       team: teamid,
+  //     }),
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //   }).then(res => res.json())
+  //   .then(data => {
+  //     console.log(data)
 
-      fetch(url+'/team/pushupdate/'+currentUser.team._id, {
-        method: 'PUT',
-        body: JSON.stringify({
-          members: data._id,
-        }),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }).then(res => {
-        console.log(res.status);
-        Swal.fire({
-          title: "Success",
-          text: "Member Added Successfully",
-          icon: "success",
-        })
-      })
+  //     fetch(url+'/team/pushupdate/'+currentUser.team._id, {
+  //       method: 'PUT',
+  //       body: JSON.stringify({
+  //         members: data._id,
+  //       }),
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //     }).then(res => {
+  //       console.log(res.status);
+  //       Swal.fire({
+  //         title: "Success",
+  //         text: "Member Added Successfully",
+  //         icon: "success",
+  //       })
+  //     })
       
-    })
-  }
+  //   })
+  // }
 
-  const addMember = () => {
-    fetch(url+'/user/getbyemail/'+userToAdd)
-    .then(res => res.json())
-    .then(data => {
-      console.log(data)
-      if(data){
+  // const addMember = () => {
+  //   fetch(url+'/user/getbyemail/'+userToAdd)
+  //   .then(res => res.json())
+  //   .then(data => {
+  //     console.log(data)
+  //     if(data){
 
-        if(!data.team){
-          updateUser(currentUser.team._id, data._id)
-        }else{
-          Swal.fire({
-            icon: "error",
-            title: "User Already in a Team",
-            text: "User Already in a Team",
-          });
-        }
+  //       if(!data.team){
+  //         updateUser(currentUser.team._id, data._id)
+  //       }else{
+  //         Swal.fire({
+  //           icon: "error",
+  //           title: "User Already in a Team",
+  //           text: "User Already in a Team",
+  //         });
+  //       }
 
-      }else{
-        console.log('user not found');
-      }
-    })
-  }
+  //     }else{
+  //       console.log('user not found');
+  //     }
+  //   })
+  // }
 
 
   const updateStatus = async (issueid) => {
     const res = fetch(url + "/issue/update/" + issueid, {
       method: "PUT",
       body: JSON.stringify({ status: "solved" }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+
+    if (res.status === 200) {
+      console.log("updated")
+      getDataFromBackend()
+    }
+  }
+
+  const updateStatusOpen = async (issueid) => {
+    const res = fetch(url + "/issue/update/" + issueid, {
+      method: "PUT",
+      body: JSON.stringify({ status: "new" }),
       headers: {
         "Content-Type": "application/json",
       },
@@ -104,6 +119,12 @@ const Track = () => {
       return <i class="fas fa-plus  text-danger  "></i>
     }
   }
+
+//   const teamTitle =(team) => {
+// if(team !== "")
+// return team
+// else return 'None'
+//   }
 
   const displayIssues = () => {
     if (!loading) {
@@ -130,13 +151,16 @@ const Track = () => {
                   <div class="accordion-body">
                     <h4>Type : {type}</h4>
                     <h4>Team : {team}</h4>
-
+                   
                     <h4>Assign Name : {assignedBy.name}</h4>
                     <h4>Time : {new Date(createdAt).toLocaleDateString()}</h4>
                     <h4>Organisation : {org}</h4>
                     <h4>Status : {statusFun(status)} </h4>
                     <Button color="error" variant="contained" onClick={(e) => updateStatus(_id)}>
                       Close
+                    </Button>
+                    <Button color="error" variant="contained" className="ms-3" onClick={(e) => updateStatusOpen(_id)}>
+                      Open
                     </Button>
                   </div>
                 </div>
@@ -150,13 +174,13 @@ const Track = () => {
 
   return (
     <div  style={{backgroundColor:"rgb(245 245 255)",height:"100vh"}}>
-      <header>
+      {/* <header>
         <div className="container">
 
           <input className="form-control" onChange={e => setUserToAdd(e.target.value) } />
           <button onClick={addMember}>Add New Member</button>
         </div>
-        </header>
+        </header> */}
       <div className="container">
         <h2 className="mt-5 ">All issues</h2>
         {displayIssues()}

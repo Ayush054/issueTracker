@@ -35,7 +35,7 @@ const Login = () => {
         const data = await res.json();
         sessionStorage.setItem("user", JSON.stringify(data));
         setLoggedIn(true);
-        navigate('/Issues');
+        navigate('/Track');
         //navigate("/login")
       } else {
         console.log("Login error ");
