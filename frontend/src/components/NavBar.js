@@ -90,7 +90,7 @@ const NavBar = ({ darkTheme, setDarkTheme }) => {
 
           {loggedIn ? (
         <div class="d-flex align-items-center">
-          <span className="me-2">Hi, {currentUser.name}!</span>
+          <span className="me-2">Hi, {currentUser ? currentUser.name : ''}!</span>
           <div class="dropdown">
             <Link
               className="dropdown-toggle d-flex align-items-center hidden-arrow"
