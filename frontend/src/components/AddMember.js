@@ -12,7 +12,7 @@ const AddMember = () => {
     const [gotdata,setgotdata] = useState(false);
     const getDataFromBackend = async () => {
       // setgotdata(true)
-      const res = await fetch(url + '/team')
+      const res = await fetch(url + '/team/getbyid/'+currentUser.team._id)
       const data = await res.json()
       setCurrentTeam(data)
       setgotdata(true)
@@ -20,7 +20,7 @@ const AddMember = () => {
     }
     useEffect(()=>{
       getDataFromBackend();
-    },[currentTeam,gotdata])
+    },[])
     
 
     const [userToAdd, setUserToAdd] = useState("");

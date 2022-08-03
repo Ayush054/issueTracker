@@ -31,7 +31,7 @@ router.get('/getall',(req,res) => {
 router.get('/getbyid/:id', (req,res)=>{
     const id=req.params.id;
     console.log(id);
-    Model.findById( req.params.id)
+    Model.findById( req.params.id).populate('members')
     .then((result) => {
         res.json(result);
     }).catch((err) => {
