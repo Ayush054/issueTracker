@@ -5,14 +5,14 @@ import { UserContext } from "../useContext"
 
 const AddMember = () => {
 
-    const url = "http://localhost:5000/team/getall"
+    const url = "http://localhost:5000"
     const [currentTeam, setCurrentTeam] = useState();
     const {currentUser} = useContext(UserContext);
 
     const [gotdata,setgotdata] = useState(false);
     const getDataFromBackend = async () => {
       // setgotdata(true)
-      const res = await fetch(url)
+      const res = await fetch(url + '/team')
       const data = await res.json()
       setCurrentTeam(data)
       setgotdata(true)
@@ -84,8 +84,8 @@ const AddMember = () => {
 
       const displayName=() => {
 if(gotdata){
-  return  currentTeam.map(({ members }) => 
-  (<h5>{members[0].name}</h5>)
+  return  currentTeam.members.map(( member ) => 
+  (<h5>{member.name}</h5>)
   )
 }
       }
