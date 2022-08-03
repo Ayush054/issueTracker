@@ -152,7 +152,7 @@ const Track = () => {
                 <div id={_id} class="accordion-collapse collapse show" aria-labelledby="headingOne" data-mdb-parent="#accordionExample">
                   <div class="accordion-body">
                     <h4>Type : {type}</h4>
-                    <h4>Team : {team}</h4>
+                    <h4>Team :  {currentUser.team ? currentUser.team.title :"No Team Created"}</h4>
                    
                     <h4>Assign Name : {assignedBy.name}</h4>
                     <h4>Time : {new Date(createdAt).toLocaleDateString()}</h4>
@@ -185,9 +185,7 @@ const Track = () => {
         </header> */}
       <div className="container">
         <h2 className="mt-5 ">All issues</h2>
-        <h3>Team Name : {currentUser.team ? currentUser.team.title : 
-          'No Team Created'
-        }</h3>
+       
         {displayIssues()}
       </div>
     </div>

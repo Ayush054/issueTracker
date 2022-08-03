@@ -1,11 +1,27 @@
 import { Button } from "@mui/material"
-import React, { useEffect, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import Swal from "sweetalert2"
+import { UserContext } from "../useContext"
 
 const AddMember = () => {
 
-    const url = "http://localhost:5000"
-    const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem("user")))
+    const url = "http://localhost:5000/team/getall"
+    const [currentTeam, setCurrentTeam] = useState();
+    const {currentUser} = useContext(UserContext);
+
+    const [gotdata,setgotdata] = useState(false);
+    const getDataFromBackend = async () => {
+      // setgotdata(true)
+      const res = await fetch(url)
+      const data = await res.json()
+      setCurrentTeam(data)
+      setgotdata(true)
+      console.log(data)
+    }
+    useEffect(()=>{
+      getDataFromBackend();
+    },[currentTeam,gotdata])
+    
 
     const [userToAdd, setUserToAdd] = useState("");
 
@@ -65,6 +81,15 @@ const AddMember = () => {
           }
         })
       }
+
+      const displayName=() => {
+if(gotdata){
+  return  currentTeam.map(({ members }) => 
+  (<h5>{members[0].name}</h5>)
+  )
+}
+      }
+      
     
 
     return (
@@ -100,7 +125,12 @@ const AddMember = () => {
                   <button type="submit" onClick={addMember} class="btn btn-primary btn-lg ms-md-2" aria-controls="#picker-editor">
                     Add
                   </button>
-                </div>
+                  </div>
+                  <div>
+                  <hr />
+                 <h3>User Already in Team : </h3>
+                  {displayName()}
+                </div>                
               </div>
             </div>
           </section>
