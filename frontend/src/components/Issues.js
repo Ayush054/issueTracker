@@ -1,6 +1,6 @@
 import { Button } from "@mui/material"
 import { Formik } from "formik"
-import React, { useState,useEffect } from "react"
+import React, { useState} from "react"
 import { useNavigate } from "react-router-dom"
 import Swal from "sweetalert2"
 
@@ -26,7 +26,7 @@ const Issues = () => {
   const userSubmit = async (formdata) => {
     console.log(formdata)
 
-    const response = await fetch("http://localhost:5000/issue/add", {
+    const response = await fetch(url+"/issue/add", {
       method: "POST",
       body: JSON.stringify(formdata),
       headers: {
@@ -62,14 +62,14 @@ const Issues = () => {
       <div data-draggable="true" class="" style={{position: "relative"}}>
         
         <section draggable="false" class="overflow-hidden pt-1" data-v-271253ee="">
-          <section class="mb-10">
+          <section class="mb-2">
           
           
             <div class="p-2 bg-image"
               style={{backgroundImage: "url('https://mdbootstrap.com/img/new/textures/full/284.jpg')", height: "300px", backgroundSize: "cover", backgroundPosition: "50% 50%", backgroundColor: "rgba(0, 0, 0, 0);"}}
               aria-controls="#picker-editor"></div> 
             <div class="card mx-4 mx-md-5 shadow-5-strong"
-              style= {{marginTop: "-180px", background: "hsla(0, 0%, 100%, 0.8)", backdropFilter: "blur(30px)"}}>
+              style= {{marginTop: "-225px", background: "hsla(0, 0%, 100%, 0.8)", backdropFilter: "blur(30px)"}}>
               <div class="card-body py-5 px-md-5">
                 <div class="row gx-lg-5 align-items-center">
                   <div class="col-lg-5 mb-4 mb-lg-0">
@@ -146,7 +146,7 @@ const Issues = () => {
                   </div>
                   <div class="col-lg-7 mb-4 mb-md-0" >
                     <div class="row gx-lg-3" >
-                    <img src="https://cdn-icons-png.flaticon.com/512/601/601597.png" alt="" style={{height:"60vh"}} ></img>
+                    <img src="https://static.thenounproject.com/png/2379847-200.png" alt="" style={{height:"60vh"}} ></img>
                      
                     </div>
                   </div>

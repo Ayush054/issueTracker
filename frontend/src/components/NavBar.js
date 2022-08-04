@@ -1,5 +1,5 @@
 //import { Switch } from "@mui/material";
-import React, { useContext, useState } from "react"
+import React, { useContext} from "react"
 import { Link, NavLink, useNavigate } from "react-router-dom"
 import { UserContext } from "../useContext";
 
@@ -35,7 +35,7 @@ const NavBar = ({ darkTheme, setDarkTheme }) => {
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           
-            <a className="navbar-brand mt-2 mt-lg-0">
+            <a className="navbar-brand mt-2 mt-lg-0" href="">
               <img
                 src="https://st2.depositphotos.com/2100659/6870/v/950/depositphotos_68708405-stock-illustration-letter-a-vector-logo-concept.jpg"
                 height="35"

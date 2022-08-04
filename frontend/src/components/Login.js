@@ -56,8 +56,8 @@ const Login = () => {
   return (
     <section draggable="false" class="overflow-hidden pt-0 " data-v-271253ee="">
       <section
-        class="mb-10 background-radial-gradient overflow-hidden"
-        style={{ height: "90vh" }}
+        class=" background-radial-gradient overflow-hidden"
+        style={{ height: "91vh" }}
       >
         <div class="container px-4 py-5 px-md-5 text-center text-lg-start">
           <div class="row gx-lg-5 align-items-center">
@@ -66,8 +66,8 @@ const Login = () => {
                 class="my-4 display-3 fw-bold ls-tight"
                 style={{ color: "hsl(218, 81%, 95%)" }}
               >
-                <span>Do not miss</span> <br />
-                <span style={{ color: "hsl(218, 81%, 75%)" }}>any updates</span>
+                <span>Welcome</span> <br />
+                <span style={{ color: "hsl(218, 81%, 75%)" }}>Back!</span>
               </h1>
               <p
                 class="mb-4 opacity-70 lead"
