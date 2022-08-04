@@ -67,33 +67,29 @@ const Register = () => {
       class="overflow-hidden pt-0"
       data-v-271253ee=""
     >
-      <section class="mb-10 background-radial-gradient overflow-hidden">
+      <section class=" background-radial-gradient overflow-hidden">
        
         <div
-          class="container px-4 py-5 px-md-5 text-center text-lg-start"
+          class="container px-2 py-4 px-md-3 text-center text-lg-start"
         >
-          <div class="row gx-lg-5 align-items-center mb-5">
-            <div class="col-lg-6 mb-5 mb-lg-0" style={{zIndex: "10"}}>
+          <div class="row gx-lg-2 align-items-center mb-1">
+            <div class="col-lg-6 mb-3 mb-lg-0" style={{zIndex: "10"}}>
               <h1
-                className="my-5 display-3 fw-bold ls-tight"
+                className="my-3 display-4 fw-bold ls-tight"
                 style={{color:" hsl(218, 81%, 95%)"}}
               >
-                <span>The best offer</span> <br />
+                <span>Not A</span> <br />
                 <span style={{color:"hsl(218, 81%, 75%)"}}
-                  >for your Project</span
+                  >Member?</span
                 >
               </h1>
               <p
-                class="mb-4 opacity-70"
+                class="mb-1 opacity-70 lead"
                 style={{color:" hsl(218, 81%, 85%)"}}
-              >
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Temporibus, expedita iusto veniam atque, magni tempora
-                mollitia dolorum consequatur nulla, neque debitis eos
-                reprehenderit quasi ab ipsum nisi dolorem modi. Quos?
+              >Join for the best offer for your Project.
               </p>
             </div>
-            <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+            <div class="col-lg-6 mb-1 mb-lg-0 position-relative">
               <div
                 id="radius-shape-1"
                 class="position-absolute rounded-circle shadow-5-strong"
@@ -103,7 +99,7 @@ const Register = () => {
                 class="position-absolute shadow-5-strong"
               ></div>
               <div class="card bg-glass">
-                <div class="card-body px-4 py-5 px-md-5">
+                <div class="card-body px-4 py-4 px-md-5">
                   
                 <Formik initialValues={{
         name:'',
@@ -115,11 +111,11 @@ const Register = () => {
 {({values, handleChange, handleSubmit, errors}) => (
   <form action="" onSubmit={handleSubmit}>
                  
-                    <h1 className="text-center mt-4">REGISTER!!!</h1>
+                    <h1 className="text-center ">REGISTER!!!</h1>
       <hr />
 
 
-                    <div class="form-outline mb-4">
+                    <div class="form-outline mb-2">
                     <TextField value={values.name} onChange={handleChange} id="name" sx={{mt:2}} fullWidth label="name"  helperText={errors.name} error={errors.name ? true:false}></TextField>
  
                       <div class="form-notch">
@@ -136,7 +132,7 @@ const Register = () => {
                     </div>
 
 
-                    <div class="form-outline mb-4">
+                    <div class="form-outline mb-2">
                     <TextField value={values.mobile } onChange={handleChange} id="mobile" sx={{mt:1}} fullWidth label="Mobile number" ></TextField>
  
                       <div class="form-notch">
@@ -153,7 +149,7 @@ const Register = () => {
                     </div>
 
 
-                    <div class="form-outline mb-4">
+                    <div class="form-outline mb-2">
                     <TextField value={values.age} onChange={handleChange} id="age" sx={{mt:1}} fullWidth label="age"></TextField>
  
                       <div class="form-notch">
@@ -169,7 +165,7 @@ const Register = () => {
                       </div>
                     </div>
 
-                    <div class="form-outline mb-4">
+                    <div class="form-outline mb-2">
                     <TextField  value={values.email} onChange={handleChange} id="email"sx={{mt:1}} fullWidth label="email"></TextField>
     
                       <div class="form-notch">
@@ -185,7 +181,7 @@ const Register = () => {
                       </div>
                     </div>
 
-                    <div class="form-outline mb-4">
+                    <div class="form-outline mb-2">
                     <TextField value={values.password} onChange={handleChange} id="password" sx={{mt:1}} fullWidth label=" password" type="password"></TextField>
  
                      
@@ -206,7 +202,7 @@ const Register = () => {
                  
                   
 <Button type="submit" color="primary" variant="contained" className='btn-block mb-4' sx={{mt:2}}>Register</Button>
- <p className="mt-3">Already a user? <Link to="/Login" >Login</Link></p>
+ <p className="mt-2">Already a user? <Link to="/Login" >Login</Link></p>
 
                 
                    

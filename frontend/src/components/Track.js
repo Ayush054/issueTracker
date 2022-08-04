@@ -1,7 +1,7 @@
 //import { Card, CardContent } from "@mui/material"
 import { Button } from "@mui/material"
 import React, { useContext, useEffect, useState } from "react"
-import Swal from "sweetalert2"
+//import Swal from "sweetalert2"
 import { UserContext } from "../useContext"
 
 const Track = () => {
@@ -116,9 +116,13 @@ const Track = () => {
 
   const statusFun = (status) => {
     if (status === "solved") {
-      return <i class="fas fa-check text-success   "></i>
+      return <button className="btn btn-warning btn-rounded">closed
+     <i class="fas fa-check   "></i>
+      </button>
     } else if (status === "new") {
-      return <i class="fas fa-plus  text-danger  "></i>
+      return <button className="btn btn-info btn-rounded">Open
+       <i class="fas fa-plus "></i>
+      </button>
     }
   }
 
@@ -146,7 +150,7 @@ const Track = () => {
                     {title}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     {new Date(createdAt).toLocaleDateString()}
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span className="float-start" >{statusFun(status)}</span>
+                    <span className="float-start " >{statusFun(status)}</span>
                   </button>
                 </h2>
                 <div id={_id} class="accordion-collapse collapse show" aria-labelledby="headingOne" data-mdb-parent="#accordionExample">
@@ -159,10 +163,10 @@ const Track = () => {
                     <h4>Organisation : {org}</h4>
                     <h4>Status : {statusFun(status)} </h4>
                     <Button color="error" variant="contained" onClick={(e) => updateStatus(_id)}>
-                      Close
+                      Close issue
                     </Button>
                     <Button color="error" variant="contained" className="ms-3" onClick={(e) => updateStatusOpen(_id)}>
-                      Open
+                      Open issue
                     </Button>
                   </div>
                 </div>
