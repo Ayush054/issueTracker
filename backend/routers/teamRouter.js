@@ -22,11 +22,8 @@ router.get('/getall',(req,res) => {
     }).catch((err) => {
         console.error(err);
         res.status(500).json(err);
-     
     });
 });
-
-
 
 router.get('/getbyid/:id', (req,res)=>{
     const id=req.params.id;
