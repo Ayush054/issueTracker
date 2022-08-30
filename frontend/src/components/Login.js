@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import * as Yup from "yup";
 import { UserContext } from "../useContext";
+import {motion} from 'framer-motion';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -54,6 +55,12 @@ const Login = () => {
   });
 
   return (
+    <motion.div
+  initial={{ scale: 0.8, opacity: 0, x: '100%' }}
+  animate={{ scale: 1, opacity: 1, x : 0,  }}
+  exit={{ scale: 0.8, opacity: 0, x: '100%', transition: {duration : 1} }}
+  transition={{ type: "tween" }}  
+    >
     <section draggable="false" class="overflow-hidden pt-0 " data-v-271253ee="">
       <section
         class=" background-radial-gradient overflow-hidden"
@@ -170,6 +177,7 @@ const Login = () => {
         </div>
       </section>
     </section>
+    </motion.div>
   );
 };
 

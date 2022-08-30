@@ -81,7 +81,7 @@ router.put("/update/:id", (req, res) => {
 router.post("/authenticate", (req, res) => {
   const formdata = req.body
   Model.findOne({ email: formdata.email, password: formdata.password }).populate("team")
-    .then((result) => {
+  .then((result) => {
       console.log(result)
       if (result) {
         res.json(result)

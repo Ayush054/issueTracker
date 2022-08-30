@@ -1,7 +1,13 @@
 import React from 'react'
+import {motion} from 'framer-motion';
 
 const Home = () => {
-  return (    <div>
+  return     <motion.div
+  initial={{ scale: 0.8, opacity: 0, x: '-100%' }}
+  animate={{ scale: 1, opacity: 1, x: 0 }}
+  exit={{ scale: 0.8, opacity: 0, x: '100%' }}
+  transition= {{type : 'tween'}}
+    >
     <div
       data-draggable="true"
       class=""
@@ -442,8 +448,7 @@ const Home = () => {
       </section>
     
     </div>
-  </div>
-  )
+  </motion.div>
 }
 
 export default Home
