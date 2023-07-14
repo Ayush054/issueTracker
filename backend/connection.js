@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const dbName = "mytestdb";
-const dbUrl=`mongodb+srv://ayushagrawal1:Ankush12345@cluster0.zlzaw2v.mongodb.net/${dbName}?retryWrites=true&w=majority`
+const dbUrl=`mongodb+srv://mmm:mmm@cluster0.gvyon.mongodb.net/IssueTracker?retryWrites=true&w=majority`
 
 //const res = await mongoose.connect(dbUrl);
 
